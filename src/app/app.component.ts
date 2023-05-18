@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'template_driven_forms';
+  userInfo = {
+    userName: 'quanha',
+    password: '',
+    rememberMe: true,
+  };
+
+  constructor(){}
+
+  onSubmit(form: NgForm) : void {
+    console.log(form);
+    throw new Error("Somthing went wrong!");
+  }
 }
