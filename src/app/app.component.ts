@@ -13,6 +13,9 @@ export class AppComponent {
     rememberMe: true,
   };
 
+  usernamePattern = /^[a-z]{6,32}$/i;
+  passwordPattern = /^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{6,32}$/;
+
   constructor(){}
 
   onSubmit(form: NgForm) : void {

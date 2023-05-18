@@ -8,7 +8,14 @@
         <mat-label>UserName</mat-label>
         <!-- <input matInput placeholder="UserName" ngModel name="username"/> -->
         <!-- <input matInput placeholder="Password" [ngModel]="userInfo.userName" name="userName"/> -->
-        <input matInput placeholder="Password" [(ngModel)]="userInfo.userName" name="userName"/>
+        <input matInput placeholder="Password" [(ngModel)]="userInfo.userName" name="userName"
+          required minlength="6" maxlength="32" [pattern]="usernamePattern" #username="ngModel"/>
+        <!-- <mat-error *ngIf="username.errors?.['required']">Username is required!</mat-error> -->
+        <mat-error *ngIf="username.touched && !username.valid">
+          <span *ngIf="username.errors?.['required']">Username is required</span>
+          <span *ngIf="username.errors?.['minlength'] || username.errors?.['maxlength']">Length from 6 to 32 characters</span>
+          <span *ngIf="!(username.errors?.['minlength'] || username.errors?.['maxlength']) && username.errors?.['pattern']">Only alphabet</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="row-control" style="margin-bottom: -20px;">
@@ -20,7 +27,13 @@
         <!-- VD: <input type="password" matInput placeholder="Password" [ngModel]="userInfo.password" name="password"/> -->
         <!-- 3. [(ngModel)]: là two-way data binding, lúc này nó sẽ kết hợp propety binding
                           và event binding để đồng bộ dữ liệu giữa template và model với nhau. -->
-        <input type="password" matInput placeholder="Password" [(ngModel)]="userInfo.password" name="password"/>
+        <input type="password" matInput placeholder="Password" [(ngModel)]="userInfo.password" name="password"
+          required #password="ngModel" minlength="6" maxlength="32" [pattern]="passwordPattern"/>
+        <mat-error *ngIf="password.touched && !password.valid">
+          <span *ngIf="password.errors?.['required']">Password is required</span>
+          <span *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength']">Length from 6 to 32 characters</span>
+          <span *ngIf="!(password.errors?.['minlength'] || password.errors?.['maxlength']) && password.errors?.['pattern']">Only alphabet</span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="row-control" style="margin-right: 280px;">
@@ -32,7 +45,7 @@
       <button mat-raised-button color="primary" type="submit">Sign in</button>
     </div>
 
-    <pre>{{ signInForm.value | json }}</pre>
-    <pre>{{ userInfo | json }}</pre>
+    <pre>{{ username.errors | json }}</pre>
+    <pre>{{ password.errors | json }}</pre>
   </form>
 </div>
