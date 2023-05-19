@@ -1,0 +1,24 @@
+<div class="container" style="text-align: center;">
+  <form class="sign-in-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Sign - in</h2>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>UserName</mat-label>
+        <input matInput formControlName="usename" id="username" placeholder="UserName">
+      </mat-form-field>
+    </div>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input  matInput formControlName="password" id="password" placeholder="Password">
+      </mat-form-field>
+    </div>
+    <div class="row-control">
+      <mat-checkbox formControlName="rememberMe" id="rememberMe">Remember Me</mat-checkbox>
+    </div>
+    <div class="row-control">
+      <button mat-raised-button color="primary" type="submit">Sign In</button>
+    </div>
+  </form>
+  <!-- <pre>{{ form.value | json}}</pre> -->
+</div>
