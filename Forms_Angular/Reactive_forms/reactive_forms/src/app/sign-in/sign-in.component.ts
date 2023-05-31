@@ -20,7 +20,11 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.createForms();
+    this.form = this.formBuilder.group({
+      usename: ['', Validators.required],
+      password: ['', Validators.required],
+      rememberMe: [false]
+    });
     setTimeout(() => {
       this.form.patchValue({
         username: 'admin',
@@ -30,13 +34,13 @@ export class SignInComponent implements OnInit {
     }, 1000);
   }
 
-  createForms() {
-    this.formBuilder.group({
-      usename: ['', Validators.required],
-      password: ['', Validators.required],
-      rememberMe: [false]
-    });
-  }
+  // createForms() {
+  //   this.formBuilder.group({
+  //     usename: ['', Validators.required],
+  //     password: ['', Validators.required],
+  //     rememberMe: [false]
+  //   });
+  // }
 
   onSubmit() {
     console.log(this.form.value);
