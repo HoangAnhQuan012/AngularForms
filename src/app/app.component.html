@@ -26,7 +26,7 @@
         <!-- 2. [ngModel] : là property binding, tức là chúng ta có thể binding một value hoặc một property cho nó. -->
         <!-- VD: <input type="password" matInput placeholder="Password" [ngModel]="userInfo.password" name="password"/> -->
         <!-- 3. [(ngModel)]: là two-way data binding, lúc này nó sẽ kết hợp propety binding
-                          và event binding để đồng bộ dữ liệu giữa template và model với nhau. -->
+                và event binding để đồng bộ dữ liệu giữa template và model với nhau. -->
         <input type="password" matInput placeholder="Password" [(ngModel)]="userInfo.password" name="password"
           required #password="ngModel" minlength="6" maxlength="32" [pattern]="passwordPattern"/>
         <mat-error *ngIf="password.touched && !password.valid">
